@@ -1,0 +1,6 @@
+@API.DocumentRepository.LoadCache_HostAddress = http://localhost:5032
+
+GET {{API.DocumentRepository.LoadCache_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
