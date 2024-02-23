@@ -52,7 +52,7 @@ export default function OnboardingLayout() {
             isDirectory: file.IsDirectory,
           });
         }
-        setFiles((prev) => dataArray);
+        setFiles(() => dataArray);
       });
   }
 
