@@ -2,7 +2,6 @@ import PageTitle from "@/components/PageTitle";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -19,11 +18,12 @@ export default function OnboardingLayout() {
   const [path, setPath] = useState<any>("/");
 
   useEffect(() => {
+    console.log(path);
     handleFolderNavigation("/");
   }, []);
 
   function handleFolderNavigation(_path: any) {
-    setPath((prev: any) => _path);
+    setPath(() => _path);
     fetch(`https://localhost:7199/filemanager/files?path=${_path}`)
       .then((resp) => resp.json())
       .then((data) => {

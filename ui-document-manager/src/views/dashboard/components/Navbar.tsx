@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Progress } from "@/components/ui/progress";
+import { useEffect } from "react";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
-const navigation = [
-  {
-    title: "Dashboard",
-    link: "/",
-  },
-  {
-    title: "Account",
-    link: "/account",
-  },
-];
+// const navigation = [
+//   {
+//     title: "Dashboard",
+//     link: "/",
+//   },
+//   {
+//     title: "Account",
+//     link: "/account",
+//   },
+// ];
 
 export default function Navbar() {
-  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
     const earlierTheme = localStorage.getItem("theme");

@@ -1,6 +1,5 @@
 import Navbar from "@/views/dashboard/components/Navbar";
 import { Outlet } from "react-router-dom";
-import Sidebar from "../dashboard/components/Sidebar";
 
 export default function AuthorLayout() {
   return (

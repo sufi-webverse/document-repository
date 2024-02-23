@@ -1,4 +1,3 @@
-import React from "react";
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 
 export default function Sidebar() {

@@ -1,6 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
 import "./App.css";
-import LoadingBar from "./components/LoadingBar";
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
 import AsyncProgressProvider from "./contexts/use-async-progress-context";
