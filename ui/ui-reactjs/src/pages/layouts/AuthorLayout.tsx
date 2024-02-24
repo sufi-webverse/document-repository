@@ -7,7 +7,7 @@ export default function AuthorLayout() {
       <div className=" dark:bg-black">
       <Navbar />
       <div className="max-w-7xl mx-auto h-[100vh] mt-4">
-        <main className="p-6 w-full  bg-white  dark:bg-black dark:text-white">
+        <main className="p-6 w-full  dark:bg-black dark:text-white rounded">
           <Outlet />
         </main>
       </div>
