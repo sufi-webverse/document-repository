@@ -1,4 +1,4 @@
-import Navbar from "@/views/dashboard/components/Navbar";
+import Navbar from "@/pages/dashboard/components/Navbar";
 import { Outlet } from "react-router-dom";
 
 export default function AuthorLayout() {

@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 
 import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
@@ -58,11 +59,16 @@ export default function OnboardingLayout() {
 
   return (
     <div>
-      <div className="flex files-center gap-10">
-        <PageTitle title={"Files"} />
-        <span className="">
-          <Progress className="h-2 w-[170px]" value={33} />
-          <span className="text-[10px] text-center">30 GB of 100 GB</span>
+      <div className="flex items-center justify-between ">
+        <span className="flex items-center gap-10 ">
+          <PageTitle title={"Files"} />
+          <span className="">
+            <Progress className="h-2 w-[170px]" value={33} />
+            <span className="text-[10px] text-center">30 GB of 100 GB</span>
+          </span>
+        </span>
+        <span>
+          <Input className="w-[200px]" placeholder="type file name" />
         </span>
       </div>
 
@@ -85,7 +91,12 @@ export default function OnboardingLayout() {
         </TableHeader>
         <TableBody>
           {files.map((file) => (
-            <TableRow key={file.file.label} className={`hover:bg-gray-200 ${file.file.isDirectory ? 'hover:underline pb-2' : ''}`}>
+            <TableRow
+              key={file.file.label}
+              className={`hover:bg-gray-200 ${
+                file.file.isDirectory ? "hover:underline pb-2" : ""
+              }`}
+            >
               <TableCell className="font-medium hover:cursor-pointer ">
                 {file.file.icon} {file.file.label}
               </TableCell>

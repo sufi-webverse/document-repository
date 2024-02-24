@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import AuthorLayout from "@/views/layouts/AuthorLayout";
+import AuthorLayout from "@/pages/layouts/AuthorLayout";
 import { lazy } from "react";
-const OnboardingLayout = lazy(() => import("@/views/onboarding/OnboardingLayout"));
+const OnboardingLayout = lazy(() => import("@/pages/onboarding/OnboardingLayout"));
 
 const router = createBrowserRouter([
   {
