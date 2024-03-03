@@ -1,0 +1,1 @@
+[server]: Server is running at http://localhost:\\.\pipe\971119a3-22ef-4464-a7ef-93243004d4e2

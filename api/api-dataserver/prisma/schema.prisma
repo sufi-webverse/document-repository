@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int           @id @default(autoincrement())
+  email            String        @unique
+  countryCode      String?
+  mobileNumber     String?
+  dob              DateTime?
+  gender           String?
+  firstName        String?
+  lastName         String?
+  authorTeams      Team[]        @relation("authorId")
+  authorWorkspaces Workspace[]
+  teamUserMaps     TeamUserMap[]
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  teamId           Int?
+}
+
+model Team {
+  id           Int           @id @default(autoincrement())
+  title        String
+  description  String?
+  published    Boolean       @default(false)
+  author       User?         @relation(fields: [authorId], references: [id], name: "authorId")
+  authorId     Int?
+  teamUserMaps TeamUserMap[]
+  workspaces   Workspace[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model TeamUserMap {
+  id     Int  @id @default(autoincrement())
+  team   Team @relation(fields: [teamId], references: [id])
+  teamId Int
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+model Workspace {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  published   Boolean  @default(false)
+  team        Team?    @relation(fields: [teamId], references: [id])
+  teamId      Int?
+  author      User?    @relation(fields: [authorId], references: [id])
+  authorId    Int?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

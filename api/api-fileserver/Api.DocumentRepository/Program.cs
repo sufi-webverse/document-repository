@@ -33,9 +33,9 @@ namespace API.DocumentRepository.LoadCache
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.UseSwagger();
-                app.UseSwaggerUI();
             }
+            app.UseSwagger();
+            app.UseSwaggerUI();
             using (var scope = app.Services.CreateScope())
             {
                 var service = scope.ServiceProvider.GetService<FileManagerService>();
@@ -49,6 +49,19 @@ namespace API.DocumentRepository.LoadCache
             app.MapControllers();
 
             app.UseCors("AllowAll");
+
+            //app.Use(async (context, next) =>
+            //{
+            //    await context.Response.WriteAsync("<div>");
+            //    foreach (var variable in ServerVariables.Variables)
+            //    {
+            //        string result = context.GetServerVariable(variable);
+            //        await context.Response.WriteAsync($"<p>{variable}:    <b>{result}</b></p><br />");
+            //    }
+
+            //    await context.Response.WriteAsync("</div>");
+            //    await next.Invoke();
+            //});
 
             app.Run();
         }

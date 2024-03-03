@@ -61,7 +61,7 @@ export default function Files() {
   }
 
   return (
-    <div className="bg-white dark:bg-black">
+    <div className=" dark:bg-black">
       <div className="flex items-center justify-between ">
         <span className="flex items-center gap-10 ">
           <PageTitle title={"Files"} />
@@ -79,7 +79,7 @@ export default function Files() {
         </div>
       </div>
 
-      <Table>
+      <Table className="bg-white mt-3">
         <TableHeader>
           <TableRow>
             <TableHead></TableHead>

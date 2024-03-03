@@ -1,12 +1,7 @@
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 import PageTitle from "@/components/PageTitle";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -23,25 +18,62 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
-
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
+import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
+import teamApiService from "@/services/teamApiService";
+import Create from "./Create";
 
 export default function index() {
+  const [team, setTeam] = useState<any>([]);
+  const params = useParams();
+
+  useEffect(() => {
+    async function fetch() {
+      try {
+        const _team = await teamApiService.getTeam(params.id);
+        console.log(_team);
+        setTeam(_team?.data);
+      } catch (err) {}
+    }
+    fetch();
+  });
+
   return (
     <>
-      <PageTitle title={"My workspace"} />
+      <div className="mb-5">
+        <Link to={`/teams`}>
+          <span className="">
+            <ArrowBackIosNewOutlinedIcon className="mr-2 " fontSize="small" />
+            <span className="font-semibold text-base">Teams</span>
+          </span>
+        </Link>
+      </div>
+      {team && <h4>{team.title}</h4>}
+      <PageTitle title={"Workspace"}>
+        <Create />
+      </PageTitle>
 
       <div>
-        <div className="bg-white p-4 rounded shadow w-[550px]">
+        <div className="bg-white p-2 px-1 rounded-xl shadow-md w-[500px]">
           <div>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between p-6">
               <div className="flex gap-6 items-center">
+                <div className="flex">
+                  <LibraryBooksOutlinedIcon className="" fontSize="large" />
+                </div>
                 <div className="flex flex-col">
-                  <p className="text-xl font-semibold underline cursor-pointer">Team name</p>
+                  <p className="text-xl font-semibold underline cursor-pointer">
+                    Requirements deck
+                  </p>
                   <p>Date-</p>
                 </div>
               </div>
-              <div>
+              <div className="flex items-center">
+                <Link to={`/teams`}>
+                  <ArrowForwardOutlinedIcon />
+                </Link>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant={"ghost"}>
@@ -49,56 +81,14 @@ export default function index() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-56">
-                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuLabel>Workspace settings</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuGroup>
-                      <DropdownMenuItem>
-                        Profile
-                        <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        Billing
-                        <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        Settings
-                        <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        Keyboard shortcuts
-                        <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-                      </DropdownMenuItem>
+                      <DropdownMenuItem>Edit</DropdownMenuItem>
+                      <DropdownMenuItem>Delete</DropdownMenuItem>
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
-                    <DropdownMenuGroup>
-                      <DropdownMenuItem>Team</DropdownMenuItem>
-                      <DropdownMenuSub>
-                        <DropdownMenuSubTrigger>
-                          Invite users
-                        </DropdownMenuSubTrigger>
-                        <DropdownMenuPortal>
-                          <DropdownMenuSubContent>
-                            <DropdownMenuItem>Email</DropdownMenuItem>
-                            <DropdownMenuItem>Message</DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem>More...</DropdownMenuItem>
-                          </DropdownMenuSubContent>
-                        </DropdownMenuPortal>
-                      </DropdownMenuSub>
-                      <DropdownMenuItem>
-                        New Team
-                        <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-                      </DropdownMenuItem>
-                    </DropdownMenuGroup>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>GitHub</DropdownMenuItem>
                     <DropdownMenuItem>Support</DropdownMenuItem>
-                    <DropdownMenuItem disabled>API</DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem>
-                      Log out
-                      <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
