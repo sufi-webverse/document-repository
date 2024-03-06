@@ -1,6 +1,6 @@
 import { httpClient } from "@/helpers/httpClient";
 
-const getUser = ()=> httpClient.get('https://localhost:44364/api/myData');
+const getUser = ()=> httpClient.get('https://localhost:44387/WeatherForecast');
 
 export default {
     getUser
@@ -9,7 +9,7 @@ export default {
 // import { handleResponse, requestBase } from "../helpers/fetchHelpers";
 // const apiBase = "https://localhost:44364";
 
-// class WinAuthService {
+// class WinAuthService {   
 //   getWinUser() {
 //     let request = Object.assign({}, requestBase, { method: "GET" });
 //     let url = `${apiBase}/api/login`;

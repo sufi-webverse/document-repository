@@ -15,7 +15,7 @@ export const requestBase = (() => {
     return {
       method: "POST",
       credentials: "include",
-      mode: "cors",
+      mode: 'cors',
       headers: new Headers({
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -25,7 +25,7 @@ export const requestBase = (() => {
     return {
       method: "POST",
       credentials: "include",
-      mode: 'cors',
+      // mode: 'cors',
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

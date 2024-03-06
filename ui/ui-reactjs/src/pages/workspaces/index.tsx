@@ -56,7 +56,7 @@ export default function index() {
       </PageTitle>
 
       <div>
-        <div className="bg-white p-2 px-1 rounded-xl shadow-md w-[500px]">
+        <div className="bg-white p-2 px-1 rounded-xl shadow w-[500px]">
           <div>
             <div className="flex items-center justify-between p-6">
               <div className="flex gap-6 items-center">
@@ -64,7 +64,7 @@ export default function index() {
                   <LibraryBooksOutlinedIcon className="" fontSize="large" />
                 </div>
                 <div className="flex flex-col">
-                  <p className="text-xl font-semibold underline cursor-pointer">
+                  <p className="text-xl font-semibold cursor-pointer">
                     Requirements deck
                   </p>
                   <p>Date-</p>

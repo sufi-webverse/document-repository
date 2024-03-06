@@ -50,7 +50,7 @@ export default function index() {
           teams.map((team: any) => (
             <div
               key={team.id}
-              className="bg-white p-4 rounded-xl shadow-md w-[550px] mb-3"
+              className="bg-white p-4 rounded-xl shadow w-[550px] mb-3"
             >
               <div>
                 <div className="flex items-center justify-between">
@@ -59,7 +59,7 @@ export default function index() {
                       <PeopleOutlinedIcon className="" fontSize="large" />
                     </div>
                     <div className="flex flex-col">
-                      <p className="text-xl font-semibold underline cursor-pointer">
+                      <p className="text-xl font-semibold cursor-pointer">
                         <Link to={`/teams/${team.id}/workspaces`}>
                           {team.title}
                         </Link>
